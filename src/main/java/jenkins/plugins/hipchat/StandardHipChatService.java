@@ -7,7 +7,7 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import jenkins.model.Jenkins;
+import hudson.model.Hudson;
 import hudson.ProxyConfiguration;
 
 public class StandardHipChatService implements HipChatService {
@@ -59,8 +59,8 @@ public class StandardHipChatService implements HipChatService {
     
     private HttpClient getHttpClient() {
         HttpClient client = new HttpClient();
-        if (Jenkins.getInstance() != null) {
-            ProxyConfiguration proxy = Jenkins.getInstance().proxy;
+        if (Hudson.getInstance() != null) {
+            ProxyConfiguration proxy = Hudson.getInstance().proxy;
             if (proxy != null) {
                 client.getHostConfiguration().setProxy(proxy.name, proxy.port);
             }
