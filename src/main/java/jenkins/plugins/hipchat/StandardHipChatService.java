@@ -61,7 +61,7 @@ public class StandardHipChatService implements HipChatService {
         HttpClient client = new HttpClient();
         if (Hudson.getInstance() != null) {
             ProxyConfiguration proxy = Hudson.getInstance().proxy;
-            if (proxy != null) {
+            if (proxy != null && proxy.name != null) {
                 client.getHostConfiguration().setProxy(proxy.name, proxy.port);
             }
         }
